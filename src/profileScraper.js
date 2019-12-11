@@ -48,7 +48,7 @@ const getProfileData = async (scrapeProfile, url) => {
 
 const getAllData = async (scrapeProfile, providedTotal, initialProfile, filePath) => {
   progressBar.start(providedTotal, 0);
-  while (total <= providedTotal) {
+  while (total < providedTotal) {
     const profile = getNextProfile(initialProfile);
     if (!profile) {
       // eslint-disable-next-line no-console
