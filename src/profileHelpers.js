@@ -46,6 +46,18 @@ const getRecommendations = (profileData) => {
   return { givenCount: '0', receivedCount: '0' };
 };
 
+const getConnectionTotal = (profileData) => {
+  if (profileData.profile) {
+    return profileData.profile.connections;
+  }
+
+  if (profileData.profileAlternative) {
+    return profileData.profileAlternative.connections;
+  }
+
+  return '-';
+};
+
 const createEntry = (profileData, url) => {
   const recommendations = getRecommendations(profileData);
   const { givenCount, receivedCount } = recommendations;
@@ -56,6 +68,7 @@ const createEntry = (profileData, url) => {
     receivedCount,
     aboutMe: getAboutMe(profileData),
     skillsTotal: skillsSum(profileData),
+    connections: getConnectionTotal(profileData),
   };
 };
 
